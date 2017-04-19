@@ -48,7 +48,14 @@ class PhotoStore{
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
-            let result = self.processPhotosRequest(data: data, error: error)
+            var result = self.processPhotosRequest(data: data, error: error)
+            if case .success = result {
+                do{
+                    try self.persistentContainer.viewContext.save()
+                } catch let error {
+                    result = .failure(error)
+                }
+            }
             OperationQueue.main.addOperation {
                 completion(result)
             }
@@ -105,6 +112,22 @@ class PhotoStore{
                 }
         }
         return .success(image)
+    }
+    
+    func fetchAllPhotos(completion: @escaping (PhotosResult) -> Void) {
+        let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
+        let sortByDateTaken = NSSortDescriptor(key: #keyPath(Photo.dateTaken), ascending: true)
+        fetchRequest.sortDescriptors = [sortByDateTaken]
+        
+        let viewContext = persistentContainer.viewContext
+        viewContext.perform {
+            do{
+                let allPhotos = try viewContext.fetch(fetchRequest)
+                completion(.success(allPhotos))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
 }

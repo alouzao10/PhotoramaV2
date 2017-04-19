@@ -47,6 +47,7 @@
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailingMargin" secondItem="bQR-wB-azK" secondAttribute="trailing" constant="27" id="4G9-3t-a1i"/>
                                             <constraint firstAttribute="trailing" secondItem="Zng-ng-UZ7" secondAttribute="trailing" constant="-75" id="EYw-9K-Vxl"/>

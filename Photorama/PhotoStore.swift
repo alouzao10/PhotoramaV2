@@ -53,7 +53,7 @@ class PhotoStore{
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
-            var result = self.processPhotosRequest(data: data, error: error)
+            /*var result = self.processPhotosRequest(data: data, error: error)
             if case .success = result {
                 do{
                     try self.persistentContainer.viewContext.save()
@@ -63,16 +63,48 @@ class PhotoStore{
             }
             OperationQueue.main.addOperation {
                 completion(result)
+            }*/
+            
+            self.processPhotosRequest(data: data, error: error) {
+                (result) in
+                OperationQueue.main.addOperation {
+                    completion(result)
+                }
             }
         }
         task.resume()
     }
     
-    private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult{
+    //private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult{
+    private func processPhotosRequest(data: Data?, error: Error?, completion: @escaping (PhotosResult) -> Void){
         guard let jsonData = data else{
-            return .failure(error!)
+            //return .failure(error!)
+            completion(.failure(error!))
+            return
         }
-        return FlickrAPI.photos(fromJSON: jsonData, into: persistentContainer.viewContext)
+        //return FlickrAPI.photos(fromJSON: jsonData, into: persistentContainer.viewContext)
+        persistentContainer.performBackgroundTask {
+            (context) in
+            let result = FlickrAPI.photos(fromJSON: jsonData, into: context)
+            
+            do {
+                try context.save()
+            } catch {
+                print("ERROR saving core data : \(error)")
+                completion(.failure(error))
+                return
+            }
+            
+            switch result {
+            case let .success(photos):
+                let photoIDs = photos.map { return $0.objectID }
+                let viewContext = self.persistentContainer.viewContext
+                let viewContextPhotos = photoIDs.map { return viewContext.object(with: $0) } as! [Photo]
+                completion(.success(viewContextPhotos))
+            case .failure:
+                completion(result)
+            }
+        }
     }
     
     func fetchImage(for photo: Photo, completion: @escaping (ImageResult)->Void){

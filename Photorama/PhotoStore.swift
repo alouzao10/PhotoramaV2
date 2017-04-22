@@ -85,7 +85,7 @@ class PhotoStore{
         guard let photoURL = photo.remoteURL else {
             preconditionFailure("Photo expected to have a remote URL")
         }
-        let request = URLRequest(url: photoURL as URL)
+        let request = URLRequest(url: photoURL as! URL)
         
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in

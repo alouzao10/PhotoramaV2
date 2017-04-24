@@ -10,6 +10,8 @@ import UIKit
 
 class PhotoInfoViewController: UIViewController{
     
+    @IBOutlet var viewCount: UILabel!
+    
     @IBOutlet var imageView: UIImageView!
     
     var photo: Photo!{
@@ -21,7 +23,7 @@ class PhotoInfoViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewCount.text = "1"
         store.fetchImage(for: photo){ (result) -> Void in
             switch result{
             case let .success(image):

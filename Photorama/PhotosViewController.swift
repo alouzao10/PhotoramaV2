@@ -23,7 +23,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         
         updateDataSource()
         
-        store.fetchInterestingPhotos{
+        // Silver pg 375
+        store.fetchPhotoList {
             (photosResult) -> Void in
             self.updateDataSource()
         }

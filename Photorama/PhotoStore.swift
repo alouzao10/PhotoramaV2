@@ -47,23 +47,29 @@ class PhotoStore{
         return URLSession(configuration: config)
     }()
     
-    func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void){
-        
-        let url = FlickrAPI.interestingPhotosURL
+    // Have a function to call this function to set the randomSet
+    func fetchPhotoList(completion: @escaping (PhotosResult) -> Void){
+        // Silver pg 275
+        //let url = FlickrAPI.interestingPhotosURL
+        var url: URL
+        let randomSet = Int(arc4random_uniform(2))
+        switch randomSet {
+        case 0:
+            url = FlickrAPI.interestingPhotosURL
+        default:
+            url = FlickrAPI.recentPhotosURL
+        }
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
-            /*var result = self.processPhotosRequest(data: data, error: error)
-            if case .success = result {
-                do{
-                    try self.persistentContainer.viewContext.save()
-                } catch let error {
-                    result = .failure(error)
-                }
+            
+            // Bronze pg 375
+            if let status = response as? HTTPURLResponse {
+                print("Fetch Interesting Photos")
+                print("statusCode is \(status.statusCode)")
+                print("Header fields are \(status.allHeaderFields)")
+                
             }
-            OperationQueue.main.addOperation {
-                completion(result)
-            }*/
             
             self.processPhotosRequest(data: data, error: error) {
                 (result) in
@@ -126,6 +132,15 @@ class PhotoStore{
         
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
+            
+            // Bronze pg 375
+            if let status = response as? HTTPURLResponse {
+                print("Fetching Image")
+                print("statusCode is \(status.statusCode)")
+                print("Header fields are \(status.allHeaderFields)")
+                print("")
+            }
+            
             let result = self.processImageRequest(data: data, error: error)
             if case let .success(image) = result{
                 self.imageStore.setImage(image, forKey: photoKey)

@@ -10,8 +10,6 @@ import UIKit
 
 class PhotoInfoViewController: UIViewController{
     
-    @IBOutlet var viewCount: UILabel!
-    
     @IBOutlet var imageView: UIImageView!
     
     var photo: Photo!{
@@ -23,7 +21,6 @@ class PhotoInfoViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewCount.text = "1"
         store.fetchImage(for: photo){ (result) -> Void in
             switch result{
             case let .success(image):
@@ -32,6 +29,19 @@ class PhotoInfoViewController: UIViewController{
                 print("Error fetching image for photo: \(error)")
             }
         }
+        // Bronze pg 416
+        photo.viewCount += 1
+        store.saveContextIfNeeded()
+        
+        let label = UILabel()
+        label.text = "\(photo.viewCount) views"
+        label.backgroundColor = UIColor.clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(label)
+        
+        label.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -8).isActive = true
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

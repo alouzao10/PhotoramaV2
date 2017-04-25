@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.swift
 //  Photorama
 //
-//  Created by Alex Louzao on 4/21/17.
+//  Created by Alex Louzao on 4/25/17.
 //  Copyright © 2017 ALcsc2310. All rights reserved.
 //
 
@@ -20,6 +20,7 @@ extension Photo {
     @NSManaged public var photoID: String?
     @NSManaged public var remoteURL: NSObject?
     @NSManaged public var title: String?
+    @NSManaged public var viewCount: Int64
     @NSManaged public var tags: NSSet?
 
 }

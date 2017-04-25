@@ -47,18 +47,9 @@ class PhotoStore{
         return URLSession(configuration: config)
     }()
     
-    // Have a function to call this function to set the randomSet
     func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void){
         // Silver pg 275
         let url = FlickrAPI.interestingPhotosURL
-        /*var url: URL
-        let randomSet = Int(arc4random_uniform(2))
-        switch randomSet {
-        case 0:
-            url = FlickrAPI.interestingPhotosURL
-        default:
-            url = FlickrAPI.recentPhotosURL
-        }*/
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
@@ -219,6 +210,15 @@ class PhotoStore{
             } catch {
                 completion(.failure(error))
             }
+        }
+    }
+    
+    // Bronze pg 416
+    func saveContextIfNeeded() {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            print("Save context")
+            try? context.save()
         }
     }
     

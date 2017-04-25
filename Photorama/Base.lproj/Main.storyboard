@@ -42,7 +42,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zng-ng-UZ7">
                                                     <rect key="frame" x="-75" y="-19" width="240" height="128"/>
                                                 </imageView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-wB-azK">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-wB-azK">
                                                     <rect key="frame" x="35" y="35" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
@@ -76,15 +76,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="zzk-Be-Y8h">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="toC-lK-erX">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="ZHs-Sm-qI4">
-                                <rect key="frame" x="16" y="6" width="51" height="31"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="2c9-sJ-ku4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S5U-fL-Ji6">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
+                                <state key="normal" title="Recent Pics"/>
+                                <connections>
+                                    <action selector="getRecent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h4F-7Y-ahp"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wsm-Di-jOG">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cb9-j6-Ytd">
+                                <rect key="frame" x="253" y="7" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Interesting Pics"/>
+                                <connections>
+                                    <action selector="getIntersting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qs5-ss-KQw"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="iz3-Ez-g8b" id="hUj-Y1-Enx"/>
+                        <outlet property="interestingPics" destination="wsm-Di-jOG" id="6pq-DV-6le"/>
+                        <outlet property="recentPics" destination="2c9-sJ-ku4" id="0Rb-FG-Fqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

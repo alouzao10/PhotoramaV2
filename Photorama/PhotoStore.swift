@@ -48,17 +48,41 @@ class PhotoStore{
     }()
     
     // Have a function to call this function to set the randomSet
-    func fetchPhotoList(completion: @escaping (PhotosResult) -> Void){
+    func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void){
         // Silver pg 275
-        //let url = FlickrAPI.interestingPhotosURL
-        var url: URL
+        let url = FlickrAPI.interestingPhotosURL
+        /*var url: URL
         let randomSet = Int(arc4random_uniform(2))
         switch randomSet {
         case 0:
             url = FlickrAPI.interestingPhotosURL
         default:
             url = FlickrAPI.recentPhotosURL
+        }*/
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request){
+            (data, response, error) -> Void in
+            
+            // Bronze pg 375
+            if let status = response as? HTTPURLResponse {
+                print("Fetch Interesting Photos")
+                print("statusCode is \(status.statusCode)")
+                print("Header fields are \(status.allHeaderFields)")
+                
+            }
+            
+            self.processPhotosRequest(data: data, error: error) {
+                (result) in
+                OperationQueue.main.addOperation {
+                    completion(result)
+                }
+            }
         }
+        task.resume()
+    }
+    func fetchRecentPics(completion: @escaping (PhotosResult) -> Void){
+        // Silver pg 275
+        let url = FlickrAPI.recentPhotosURL
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in

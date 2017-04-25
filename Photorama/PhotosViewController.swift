@@ -9,6 +9,9 @@
 import UIKit
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate{
+    
+    @IBOutlet var recentPics: UIBarButtonItem!
+    @IBOutlet var interestingPics: UIBarButtonItem!
 
     //@IBOutlet var imageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
@@ -23,12 +26,30 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         
         updateDataSource()
         
-        // Silver pg 375
-        store.fetchPhotoList {
+
+    }
+    
+    // Silver pg 375
+    @IBAction func getIntersting(_ sender: UIButton){
+        viewDidLoad()
+        store.fetchInterestingPhotos {
             (photosResult) -> Void in
             self.updateDataSource()
         }
+        print("GETTING INTERESTING")
+        
+        
     }
+    @IBAction func getRecent(_ sender: UIButton){
+        viewDidLoad()
+        store.fetchRecentPics {
+            (photosResult) -> Void in
+            self.updateDataSource()
+        }
+        print("GETTING RECENT")
+        
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath){

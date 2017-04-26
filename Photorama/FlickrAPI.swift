@@ -64,6 +64,8 @@ struct FlickrAPI{
             photo.dateTaken = dateTaken as NSDate
             // Bronze pg 416
             photo.viewCount = 0
+            // Silver pg 436
+            photo.favoritePic = false
         }
         return photo
     }

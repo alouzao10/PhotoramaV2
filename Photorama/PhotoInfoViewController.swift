@@ -12,6 +12,9 @@ class PhotoInfoViewController: UIViewController{
     
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet var setFavorite: UIToolbar!
+    @IBOutlet var fave: UILabel!
+    
     var photo: Photo!{
         didSet{
             navigationItem.title = photo.title
@@ -31,6 +34,7 @@ class PhotoInfoViewController: UIViewController{
         }
         // Bronze pg 416
         photo.viewCount += 1
+
         store.saveContextIfNeeded()
         
         let label = UILabel()
@@ -43,6 +47,23 @@ class PhotoInfoViewController: UIViewController{
         label.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -8).isActive = true
         
     }
+    
+    // Silver pg 436 POSSIBLY WRONG
+    @IBAction func setFavorite(_ sender: UIButton){
+        if sender.tag == 0 {
+            sender.tag = 1
+            photo.favoritePic = true
+            fave.text = "Favorite"
+            //store.saveContextIfNeeded()
+        } else {
+            sender.tag = 0
+            photo.favoritePic = false
+            fave.text = ""
+            //store.saveContextIfNeeded()
+        }
+        
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

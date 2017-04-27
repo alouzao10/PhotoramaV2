@@ -26,6 +26,12 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         
         updateDataSource()
         
+        // translate eye to origin, translation from origin to eye
+        // rotation about the eye so changing at
+        // eye -> 0,0,0 -> apply the angles -> return to eye
+        // move both eye and at to move forward and backward update direction vector
+        
+        // element array buffer for cube storage
 
     }
     

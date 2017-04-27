@@ -81,6 +81,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         }
     }
     
+    
     private func updateDataSource(){
         store.fetchAllPhotos { (photosResult) in
             switch photosResult {
@@ -92,7 +93,28 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
-    
 }
+// Silver pg 401
+// adds new functionality to the class
+    extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+        func collectionView(_ collectionView: UICollectionView,
+                            layout collectionLayout: UICollectionViewLayout,
+                            sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let viewWidth = collectionView.bounds.size.width
+            let numImgRow: CGFloat = 4
+            let imgW = viewWidth / numImgRow
+            return CGSize(width: imgW, height: imgW)
+        }
+
+        override func viewWillTransition(to size: CGSize,
+                                         with coordinator: UIViewControllerTransitionCoordinator){
+            // reload the data of the collectionView to redisplay as 4 images per row
+            collectionView.reloadData()
+        }
+    }
+
+
+
+
 
 

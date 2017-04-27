@@ -32,6 +32,19 @@ class PhotoInfoViewController: UIViewController{
                 print("Error fetching image for photo: \(error)")
             }
         }
+        
+        // Silver pg 436
+        // when you go back in the view it will set the tag if its been faved...
+        if photo.favoritePic == true {
+            fave.text = "Favorite"
+            //setFavorite.tag = 1
+        }
+        if photo.favoritePic == false{
+            fave.text = ""
+            //setFavorite.tag = 0
+        }
+        
+        
         // Bronze pg 416
         photo.viewCount += 1
 
@@ -48,18 +61,19 @@ class PhotoInfoViewController: UIViewController{
         
     }
     
-    // Silver pg 436 POSSIBLY WRONG
+    // Silver pg 436
     @IBAction func setFavorite(_ sender: UIButton){
-        if sender.tag == 0 {
+        // set the Core Data tag and the tag of button to detect a favorite image
+        if sender.tag == 0 && photo.favoritePic == false{
             sender.tag = 1
             photo.favoritePic = true
             fave.text = "Favorite"
-            //store.saveContextIfNeeded()
+            store.saveContextIfNeeded()
         } else {
             sender.tag = 0
             photo.favoritePic = false
             fave.text = ""
-            //store.saveContextIfNeeded()
+            store.saveContextIfNeeded()
         }
         
     }

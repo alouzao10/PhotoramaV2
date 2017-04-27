@@ -25,15 +25,15 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iz3-Ez-g8b">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="h6a-Kn-Cg3">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="h6a-Kn-Cg3">
                                     <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="8zJ-m6-8FE" customClass="PhotoCollectionViewCell" customModule="Photorama" customModuleProvider="target">
-                                        <rect key="frame" x="2" y="2" width="90" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -122,9 +122,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Nz-Va-muu">
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRe-kX-OvI">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRe-kX-OvI">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Tags" id="xHI-fj-x26">
                                         <connections>
@@ -143,9 +142,11 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqu-Nd-85K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqu-Nd-85K">
                                 <rect key="frame" x="157" y="635" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="xCb-de-KWl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -153,10 +154,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="HRe-kX-OvI" firstAttribute="trailing" secondItem="3Nz-Va-muu" secondAttribute="trailing" id="4V0-Yh-E8d"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="top" secondItem="54F-dA-vUk" secondAttribute="bottom" constant="8" id="Mpi-PF-yBd"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="leading" secondItem="0ue-Fa-xGx" secondAttribute="leading" id="N5E-2B-4Lf"/>
                             <constraint firstItem="5VT-RS-w0g" firstAttribute="top" secondItem="3Nz-Va-muu" secondAttribute="bottom" id="Oq9-fM-jte"/>
+                            <constraint firstItem="5VT-RS-w0g" firstAttribute="top" secondItem="Nqu-Nd-85K" secondAttribute="bottom" constant="11" id="QFo-fH-nex"/>
+                            <constraint firstItem="Nqu-Nd-85K" firstAttribute="centerY" secondItem="HRe-kX-OvI" secondAttribute="centerY" id="ZUi-Dj-nF3"/>
+                            <constraint firstItem="Nqu-Nd-85K" firstAttribute="centerX" secondItem="HRe-kX-OvI" secondAttribute="centerX" id="ckS-uS-diK"/>
+                            <constraint firstItem="HRe-kX-OvI" firstAttribute="leading" secondItem="3Nz-Va-muu" secondAttribute="leading" id="fkR-FP-Kfi"/>
                             <constraint firstAttribute="trailing" secondItem="3Nz-Va-muu" secondAttribute="trailing" id="m0r-oK-NEG"/>
+                            <constraint firstItem="HRe-kX-OvI" firstAttribute="bottom" secondItem="5VT-RS-w0g" secondAttribute="top" id="wgr-ht-WHK"/>
                         </constraints>
                     </view>
                     <connections>

@@ -15,6 +15,8 @@ enum FlickrError: Error{
 
 enum Method: String {
     // Silver pg 375
+    // Setting the cases to either retrieve the interesting photos or
+    // recent photos that have been determined by the button press
     case interestingPhotos = "flickr.interestingness.getList"
     case recentPhotos = "flickr.photos.getRecent"
 }
@@ -63,8 +65,10 @@ struct FlickrAPI{
             photo.remoteURL = url as NSURL
             photo.dateTaken = dateTaken as NSDate
             // Bronze pg 416
+            // Sets the viewCount value which was added as an attribute in the core data
             photo.viewCount = 0
             // Silver pg 436
+            // Sets the favoritePic bool which was added as an attribute in the core data
             photo.favoritePic = false
         }
         return photo

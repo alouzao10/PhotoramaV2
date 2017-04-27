@@ -55,6 +55,7 @@ class PhotoStore{
             (data, response, error) -> Void in
             
             // Bronze pg 375
+            // Prints out the information of each image as the interesting images are loading
             if let status = response as? HTTPURLResponse {
                 print("Fetch Interesting Photos")
                 print("statusCode is \(status.statusCode)")
@@ -79,8 +80,9 @@ class PhotoStore{
             (data, response, error) -> Void in
             
             // Bronze pg 375
+            // Prints out the information of each image as the recent images are loading
             if let status = response as? HTTPURLResponse {
-                print("Fetch Interesting Photos")
+                print("Fetch Recent Photos")
                 print("statusCode is \(status.statusCode)")
                 print("Header fields are \(status.allHeaderFields)")
                 
@@ -96,14 +98,11 @@ class PhotoStore{
         task.resume()
     }
     
-    //private func processPhotosRequest(data: Data?, error: Error?) -> PhotosResult{
     private func processPhotosRequest(data: Data?, error: Error?, completion: @escaping (PhotosResult) -> Void){
         guard let jsonData = data else{
-            //return .failure(error!)
             completion(.failure(error!))
             return
         }
-        //return FlickrAPI.photos(fromJSON: jsonData, into: persistentContainer.viewContext)
         persistentContainer.performBackgroundTask {
             (context) in
             let result = FlickrAPI.photos(fromJSON: jsonData, into: context)
@@ -148,13 +147,14 @@ class PhotoStore{
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
             
-            // Bronze pg 375
+            /* Bronze pg 375
+            // Prints out the information of each image
             if let status = response as? HTTPURLResponse {
                 print("Fetching Image")
                 print("statusCode is \(status.statusCode)")
                 print("Header fields are \(status.allHeaderFields)")
                 print("")
-            }
+            }*/
             
             let result = self.processImageRequest(data: data, error: error)
             if case let .success(image) = result{
@@ -214,6 +214,12 @@ class PhotoStore{
     }
     
     // Bronze pg 416
+    // This function will save the contents for the view count and the favorite information
+    // Pre - As the information for the favorite and view count fields have been updated they
+    // need to be stored so that the core data can track their values for a particular image 
+    // through out the execution of the app and while it is closed
+    // Post - Stores the values for the view count and favorites boolean to keep track 
+    // about the image during execution and while the app is closed.
     func saveContextIfNeeded() {
         let context = persistentContainer.viewContext
         if context.hasChanges {

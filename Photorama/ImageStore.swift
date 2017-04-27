@@ -22,7 +22,6 @@ class ImageStore{
     }
     
     func image(forKey key: String) -> UIImage? {
-        //return cache.object(forKey: key as NSString)
         if let existingImage = cache.object(forKey: key as NSString){
             return existingImage
         }
@@ -41,7 +40,6 @@ class ImageStore{
         cache.removeObject(forKey: key as NSString)
         
         let url = imageURL(forKey: key)
-        //FileManager.default.removeItem(at: url)
         do {
             try FileManager.default.removeItem(at: url)
         } catch let deleteError{

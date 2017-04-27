@@ -12,6 +12,10 @@ class PhotoInfoViewController: UIViewController{
     
     @IBOutlet var imageView: UIImageView!
     
+    // Setting up the view count and favorite labels
+    // Also sets up the button to see if the user wants
+    // to favorite the picture they are on.
+    @IBOutlet var viewCnt: UILabel!
     @IBOutlet var setFavorite: UIToolbar!
     @IBOutlet var fave: UILabel!
     
@@ -34,34 +38,32 @@ class PhotoInfoViewController: UIViewController{
         }
         
         // Silver pg 436
-        // when you go back in the view it will set the tag if its been faved...
+        // When you transition into the view, it will set the favorite
+        // label based on if the photo has been previously favorited
         if photo.favoritePic == true {
             fave.text = "Favorite"
-            //setFavorite.tag = 1
         }
         if photo.favoritePic == false{
             fave.text = ""
-            //setFavorite.tag = 0
         }
         
-        
         // Bronze pg 416
+        // Every time the view is loaded it will increment the view count
+        // and display the information to a label on the bottom bar
         photo.viewCount += 1
+        viewCnt.text = "Views: \(photo.viewCount)"
 
+        // The contents of the favorite and view count are saved for an image
         store.saveContextIfNeeded()
-        
-        let label = UILabel()
-        label.text = "\(photo.viewCount) views"
-        label.backgroundColor = UIColor.clear
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(label)
-        
-        label.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -8).isActive = true
-        
     }
     
     // Silver pg 436
+    // A button fuction that will determine if the user want to favorite an image
+    // Pre - The photo is assumed to not be favorited by the user and assign
+    // the core data bool to false
+    // Post - After the button press it will display that the photo has been 
+    // favorited by the user and change the core data value to true which keeps track 
+    // that the image has been favorited by the user
     @IBAction func setFavorite(_ sender: UIButton){
         // set the Core Data tag and the tag of button to detect a favorite image
         if sender.tag == 0 && photo.favoritePic == false{
@@ -78,7 +80,7 @@ class PhotoInfoViewController: UIViewController{
         
     }
 
-    
+    // Transition to make the tags for an image and set the tags too
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showTags"?:

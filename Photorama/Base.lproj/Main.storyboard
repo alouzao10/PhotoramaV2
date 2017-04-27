@@ -151,10 +151,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Views:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7F-gD-5Om">
+                                <rect key="frame" x="291" y="635" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HRe-kX-OvI" firstAttribute="trailing" secondItem="3Nz-Va-muu" secondAttribute="trailing" id="4V0-Yh-E8d"/>
+                            <constraint firstItem="W7F-gD-5Om" firstAttribute="leading" secondItem="Nqu-Nd-85K" secondAttribute="trailing" constant="73" id="AsN-fm-7HK"/>
+                            <constraint firstItem="W7F-gD-5Om" firstAttribute="baseline" secondItem="Nqu-Nd-85K" secondAttribute="baseline" id="ET9-u8-pqt"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="top" secondItem="54F-dA-vUk" secondAttribute="bottom" constant="8" id="Mpi-PF-yBd"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="leading" secondItem="0ue-Fa-xGx" secondAttribute="leading" id="N5E-2B-4Lf"/>
                             <constraint firstItem="5VT-RS-w0g" firstAttribute="top" secondItem="3Nz-Va-muu" secondAttribute="bottom" id="Oq9-fM-jte"/>
@@ -169,6 +177,7 @@
                     <connections>
                         <outlet property="fave" destination="Nqu-Nd-85K" id="ZaC-cl-Cdq"/>
                         <outlet property="imageView" destination="3Nz-Va-muu" id="pCP-ql-7cF"/>
+                        <outlet property="viewCnt" destination="W7F-gD-5Om" id="OMO-ff-SbR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wH-DN-5Ff" userLabel="First Responder" sceneMemberID="firstResponder"/>

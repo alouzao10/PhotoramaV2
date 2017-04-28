@@ -2,7 +2,7 @@
 //  PhotosViewController.swift
 //  Photorama
 //
-//  Created by Alex Louzao on 4/18/17.
+//  Created by Alex Louzao on 4/18/17
 //  Copyright © 2017 ALcsc2310. All rights reserved.
 //
 

@@ -37,7 +37,7 @@ class PhotoInfoViewController: UIViewController{
             }
         }
         
-        // Silver pg 436
+        // Silver pg 436 WORKING
         // When you transition into the view, it will set the favorite
         // label based on if the photo has been previously favorited
         if photo.favoritePic == true {
@@ -57,7 +57,7 @@ class PhotoInfoViewController: UIViewController{
         store.saveContextIfNeeded()
     }
     
-    // Silver pg 436
+    // Silver pg 436 WORKING
     // A button fuction that will determine if the user want to favorite an image
     // Pre - The photo is assumed to not be favorited by the user and assign
     // the core data bool to false

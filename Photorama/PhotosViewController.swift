@@ -16,7 +16,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
 
     //@IBOutlet var imageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
-    var store: PhotoStore!
+    var store = PhotoStore()
     let photoDataSource = PhotoDataSource()
     
     override func viewDidLoad() {

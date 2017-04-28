@@ -13,13 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // return to original layout for the application
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
         // Override point for customization after application launch.
         
-        let rootViewController = window!.rootViewController as! UINavigationController
+        /*let rootViewController = window!.rootViewController as! UINavigationController
         let photosViewController = rootViewController.topViewController as! PhotosViewController
-        photosViewController.store = PhotoStore()
+        photosViewController.store = PhotoStore()*/
         
         return true
     }

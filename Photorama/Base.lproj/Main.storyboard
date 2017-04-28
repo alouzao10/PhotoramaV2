@@ -280,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photorama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HR1-CH-55c">
-                                <rect key="frame" x="91" y="159" width="193" height="48"/>
+                                <rect key="frame" x="91.5" y="159" width="193" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="UkD-d3-31o"/>
                                 </constraints>
@@ -289,10 +289,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jkH-0r-4kc">
-                                <rect key="frame" x="67" y="222" width="240" height="227"/>
+                                <rect key="frame" x="67" y="222" width="241" height="227"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J6-sy-KeR">
-                                <rect key="frame" x="166" y="103" width="43" height="48"/>
+                                <rect key="frame" x="166.5" y="103" width="43" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="gkj-ep-y3E"/>
                                 </constraints>
@@ -301,7 +301,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by Alex Louzao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37u-A2-8cz">
-                                <rect key="frame" x="86" y="479" width="202" height="21"/>
+                                <rect key="frame" x="86.5" y="479" width="202" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9ka-FQ-w0n"/>
                                 </constraints>
@@ -310,7 +310,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-83-t6q">
-                                <rect key="frame" x="105" y="47" width="165" height="48"/>
+                                <rect key="frame" x="105.5" y="47" width="165" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Ajs-tH-R5Y"/>
                                 </constraints>
@@ -319,7 +319,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJY-9y-P6J">
-                                <rect key="frame" x="138" y="520" width="99" height="30"/>
+                                <rect key="frame" x="138.5" y="520" width="99" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hPw-T3-Htu"/>
                                 </constraints>

@@ -119,7 +119,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Nz-Va-muu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Nz-Va-muu">
                                 <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRe-kX-OvI">
@@ -161,8 +161,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HRe-kX-OvI" firstAttribute="trailing" secondItem="3Nz-Va-muu" secondAttribute="trailing" id="4V0-Yh-E8d"/>
-                            <constraint firstItem="W7F-gD-5Om" firstAttribute="leading" secondItem="Nqu-Nd-85K" secondAttribute="trailing" constant="73" id="AsN-fm-7HK"/>
-                            <constraint firstItem="W7F-gD-5Om" firstAttribute="baseline" secondItem="Nqu-Nd-85K" secondAttribute="baseline" id="ET9-u8-pqt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W7F-gD-5Om" secondAttribute="trailing" constant="18" id="K0B-eq-Or0"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="top" secondItem="54F-dA-vUk" secondAttribute="bottom" constant="8" id="Mpi-PF-yBd"/>
                             <constraint firstItem="3Nz-Va-muu" firstAttribute="leading" secondItem="0ue-Fa-xGx" secondAttribute="leading" id="N5E-2B-4Lf"/>
                             <constraint firstItem="5VT-RS-w0g" firstAttribute="top" secondItem="3Nz-Va-muu" secondAttribute="bottom" id="Oq9-fM-jte"/>
@@ -171,6 +170,7 @@
                             <constraint firstItem="Nqu-Nd-85K" firstAttribute="centerX" secondItem="HRe-kX-OvI" secondAttribute="centerX" id="ckS-uS-diK"/>
                             <constraint firstItem="HRe-kX-OvI" firstAttribute="leading" secondItem="3Nz-Va-muu" secondAttribute="leading" id="fkR-FP-Kfi"/>
                             <constraint firstAttribute="trailing" secondItem="3Nz-Va-muu" secondAttribute="trailing" id="m0r-oK-NEG"/>
+                            <constraint firstItem="5VT-RS-w0g" firstAttribute="top" secondItem="W7F-gD-5Om" secondAttribute="bottom" constant="11" id="slc-iY-JUG"/>
                             <constraint firstItem="HRe-kX-OvI" firstAttribute="bottom" secondItem="5VT-RS-w0g" secondAttribute="top" id="wgr-ht-WHK"/>
                         </constraints>
                     </view>
@@ -288,7 +288,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jkH-0r-4kc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jkH-0r-4kc">
                                 <rect key="frame" x="67" y="222" width="240" height="227"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1J6-sy-KeR">

@@ -13,12 +13,17 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
     // Set up buttons to get the interesting images or recent images
     @IBOutlet var recentPics: UIBarButtonItem!
     @IBOutlet var interestingPics: UIBarButtonItem!
+    
+    // Attempted to display the favorited image like the interesting and recent
+    // Accessing the pictures and display those with the true favorite tag
+    // @IBOutlet var showFavorite: UIBarButtonItem!
 
     //@IBOutlet var imageView: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     var store = PhotoStore()
     let photoDataSource = PhotoDataSource()
     
+    // Once the view loads it sets up the information for the photo source
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = photoDataSource
@@ -40,6 +45,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         
         
     }
+    // Silver pg 375
     // If the button for recent pictures has been pressed then it will
     // call a function to send the request to retrieve the recent pictures
     @IBAction func getRecent(_ sender: UIButton){
@@ -51,6 +57,21 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         print("GETTING RECENT")
         
     }
+    
+    // Silver pg 436
+    // Attempted to load the Pictures that were set to favorite just like
+    // how the recent and interesting pictures were loaded into view
+    /*var photo = Photo()
+    @IBAction func getFavorites(_ sender: UIButton){
+        viewDidLoad()
+        store.fetchFavorites(for: photo) {
+            (photosResult) -> Void in
+            self.updateDataSource()
+        }
+        print("GETTING Favorites")
+        
+    }*/
+    
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath){
@@ -68,6 +89,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         }
     }
     
+    // makes the transition to view the image by itself where the user can 
+    // set the favorite tag, see the view coung, and set tags for the image
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         switch segue.identifier{
         case "showPhoto"?:
@@ -82,7 +105,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         }
     }
     
-    
+    // updates the data source of the image once the image is loaded
     private func updateDataSource(){
         store.fetchAllPhotos { (photosResult) in
             switch photosResult {
@@ -95,13 +118,14 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate{
         }
     }
 }
+
 // Silver pg 401
 // Adds new functionality to the class to alter the initial layout of images
 // It will update the current layout of the images to only show 4 images
 // per row and resize the images to always fit within the layout row.
     extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         
-        // Sets the new ollection view and resizes the images to fit 4 per row
+        // Sets the new collection view and resizes the images to fit 4 per row
         func collectionView(_ collectionView: UICollectionView,
                             layout collectionLayout: UICollectionViewLayout,
                             sizeForItemAt indexPath: IndexPath) -> CGSize {

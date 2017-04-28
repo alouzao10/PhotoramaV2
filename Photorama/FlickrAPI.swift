@@ -55,8 +55,6 @@ struct FlickrAPI{
             return existingPhoto
         }
         
-        //return Photo(title: title, photoID: photoID, remoteURL: url, dateTaken: dateTaken)
-        
         var photo: Photo!
         context.performAndWait{
             photo = Photo(context: context)

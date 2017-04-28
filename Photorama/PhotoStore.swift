@@ -47,6 +47,9 @@ class PhotoStore{
         return URLSession(configuration: config)
     }()
     
+    // Will retieve the URL path for the interesting images
+    // Pre - Gets the URL path for the type of image
+    // Post - Return the new collection of the image
     func fetchInterestingPhotos(completion: @escaping (PhotosResult) -> Void){
         // Silver pg 275
         let url = FlickrAPI.interestingPhotosURL
@@ -72,6 +75,22 @@ class PhotoStore{
         }
         task.resume()
     }
+    
+    // Attempt to get and display the favorited images in the view controller just
+    // like how the interesting and recent images have been viewed and loaded
+    func fetchFavorites(for photo: Photo, completion: @escaping (ImageResult)->Void){
+        let photoKey = photo.photoID
+        let image = imageStore.image(forKey: photoKey!)
+        
+        if photo.favoritePic == true {
+            self.imageStore.setImage(image!, forKey: photoKey!)
+        }
+    }
+    
+    // Will retieve the new URL path for the recent images just like how
+    // the interesting photos are fetched. Uses a different URL path to get the images
+    // Pre - Gets the URL path for the type of images
+    // Post - Return the new collection of the images
     func fetchRecentPics(completion: @escaping (PhotosResult) -> Void){
         // Silver pg 275
         let url = FlickrAPI.recentPhotosURL
@@ -146,15 +165,6 @@ class PhotoStore{
         
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
-            
-            /* Bronze pg 375
-            // Prints out the information of each image
-            if let status = response as? HTTPURLResponse {
-                print("Fetching Image")
-                print("statusCode is \(status.statusCode)")
-                print("Header fields are \(status.allHeaderFields)")
-                print("")
-            }*/
             
             let result = self.processImageRequest(data: data, error: error)
             if case let .success(image) = result{

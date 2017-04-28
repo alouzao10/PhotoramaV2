@@ -26,6 +26,9 @@ class TagsViewController: UITableViewController {
         updateTags()
     }
     
+    // When a new tag is added to the image, it will update the list
+    // of tags when the user taps the Tag button and can set any made tag 
+    // to any image that is being viewed
     func updateTags() {
         store.fetchAllTags {
             (tagsResult) in
@@ -76,11 +79,11 @@ class TagsViewController: UITableViewController {
         }
     }
     
-    
     @IBAction func done(_ sender: UIBarButtonItem) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    // Button to add a new tag value to the image and set the new tag for an image
     @IBAction func addNewTag(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Add Tag", message: nil, preferredStyle: .alert)
         alertController.addTextField {
